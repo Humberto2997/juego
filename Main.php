@@ -10,6 +10,8 @@ if (!isset($_SESSION['heroe']) || isset($_GET['reset'])) {
     if(isset($_GET['reset'])) { session_destroy(); session_start(); }
     
     $_SESSION['heroe'] = new Heroe("Héroe Guerrero", "personajes/heroe.jpg");
+    $_SESSION['pociones_vida'] = 10; 
+    $_SESSION['pociones_mana'] = 5;
     $_SESSION['enemigos'] = [
         new Enemigo("Espectro", "personajes/slime.png", "magia"),
         new Enemigo("Orco", "personajes/duendochad.jpg", "fisico"),
@@ -59,17 +61,39 @@ if (isset($_GET['accion']) && !$juegoTerminado) {
                 $_SESSION['log_heroe'] = "<strong>TU TURNO</strong><br>Usaste ataque: $accion<br>Enemigo: {$objetivo->nombre}<br>Daño realizado: $daño <br> Gasto de mana: $reg mp";
             }
         }    
-    }elseif ($accion == 'curar_vida' && $jugador->vida > 0) {
-        $cura = rand(15, 25);
-        $jugador->vida = min(70, $jugador->vida + $cura);
-        $_SESSION['log_heroe'] = "<strong>TU TURNO</strong><br>Usaste: Poción de Vida<br>Curación: $cura HP";
-    }elseif ($accion == 'curar_mana'&& $jugador->vida > 0) {
-        $reg = rand(10, 20);
-        $jugador->energia = min(50, $jugador->energia + $reg);
-        $_SESSION['log_heroe'] = "<strong>TU TURNO</strong><br>Usaste: Poción de Maná<br>Regeneración: $reg MP";
-    }else {
-        $_SESSION['log_heroe'] = "<strong>ESTAS MUERTO!</strong><br>Reinicia la partida";
     }
+    elseif ($accion == 'curar_vida') {
+       if ($_SESSION['pociones_vida'] > 0) {
+        
+        // 2. Restar una poción
+        $_SESSION['pociones_vida']--; 
+        $pocion_actual = $_SESSION['pociones_vida'];
+
+        // 3. Calcular la curación
+        $cura = rand(20, 25);
+        $jugador->vida = min(70, $jugador->vida + $cura);
+
+        // 4. Registrar el éxito en el log
+        $_SESSION['log_heroe'] = "<strong>TU TURNO</strong><br>Usaste: Poción de Vida<br>Curación: $cura HP";
+        
+    } else {
+        // 5. Si no tiene pociones, mostrar mensaje de error
+        $_SESSION['log_heroe'] = "<strong>TU TURNO</strong><br>¡No te quedan pociones!";
+        }
+    }
+  elseif ($accion == 'curar_mana') {
+    if ($_SESSION['pociones_mana'] > 0) {
+        $_SESSION['pociones_mana']--;
+        $restantes = $_SESSION['pociones_mana'];
+        
+        $reg = rand(15, 20);
+        $jugador->energia = min(50, $jugador->energia + $reg);
+        
+        $_SESSION['log_heroe'] = "<strong>TU TURNO</strong><br>Usaste: Poción de Maná<br>Regeneración: $reg MP";
+    } else {
+        $_SESSION['log_heroe'] = "<strong>TU TURNO</strong><br>¡No tienes pociones de maná!";
+    }
+}
 
     // --- TURNO DEL ENEMIGO ---
     $vivosParaContraataque = array_filter($enemigos, function($e) { return $e->vida > 0; });
@@ -166,8 +190,8 @@ if (isset($_GET['accion']) && !$juegoTerminado) {
             </div>
             <strong>OBJETOS</strong>
             <div style="display: flex;">
-                <a href="?accion=curar_vida" class="btn" style="flex:1">POCIÓN VIDA</a>
-                <a href="?accion=curar_mana" class="btn" style="flex:1">POCIÓN MANÁ</a>
+                <a href="?accion=curar_vida" class="btn" style="flex:1">POCIÓN VIDA (<?= $_SESSION['pociones_vida'] ?>)</a>
+                <a href="?accion=curar_mana" class="btn" style="flex:1">POCIÓN MANÁ (<?= $_SESSION['pociones_mana'] ?>)</a>
             </div>
             <a href="?reset=1" style="color:#666; font-size:11px; margin-top:10px; text-align:center;">Reiniciar Batalla</a>
         </div>
