@@ -46,8 +46,7 @@ if (isset($_GET['accion']) && !$juegoTerminado) {
             
             if (!empty($vivosParaAtacar)) {
                 $indice = array_rand($vivosParaAtacar);
-                $objetivo = &$enemigos[$indice]; // Referencia directa al array de la sesión
-                
+                $objetivo = $enemigos[$indice];                 
                 $daño = $jugador->calcularAtaqueRandom($accion, $objetivo);
                 $objetivo->vida -= $daño;
 

@@ -1,0 +1,39 @@
+body {
+  background: rgb(2, 19, 103);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.651);
+  /* fondo opaco */
+  padding: 30px;
+  /* espacio interno */
+  border-radius: 10px;
+  /* esquinas redondeadas */
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.814);
+  border-radius: 5px;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boton {
+  background-color: rgba(5, 46, 157, 0.651);
+  color: white;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.3);
+}
+
+.boton:hover {
+  cursor: pointer;
+  background-color: rgba(4, 255, 100, 0.651);
+  color: rgb(0, 0, 0);
+}
