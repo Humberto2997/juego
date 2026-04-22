@@ -36,3 +36,7 @@ h1 {
   color: rgb(0, 0, 0);
   box-shadow: 0 0 15px 0 rgba(255, 255, 255, 0.855);
 }
+
+.resultado {
+  color: white;
+}

@@ -1,15 +1,37 @@
 <?php
-//Captar datos con POST
-$nombre = $_POST['nombre'];
-$correo = $_POST['email'];
-$cedula = $_POST['cedula'];
-$edad = $_POST['edad'];
+class Procesador {
+    public $nombre;
+    public $email;
+    public $cedula;
+    public $edad;
+    
+    public $peso;
+    public $altura;
+    public $imc;
+    
+    public function procesarPost($datos) {
+        $this->nombre = $datos['nombre'];
+        $this->email = $datos['email'];
+        $this->cedula = $datos['cedula'];
+        $this->edad = $datos['edad'];
+    }
+    
+    public function procesarGet($datos) {
+        $this->nombre = $datos['nombre'];
+        $this->peso = $datos['peso'];
+        $this->altura = $datos['altura'];
+        $this->imc = $this->peso / ($this->altura * $this->altura);
+    }
+}
 
-//Captar datos con GET
+$procesador = new Procesador();
 
-$nombre = $_GET['nombre'];
-$peso = $_GET['peso'];
-$altura = $_GET['altura'];
-
-
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $procesador->procesarPost($_POST);
+    include 'salidaPOST.php';
+} 
+else if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $procesador->procesarGet($_GET);
+    include 'salidaGET.php';
+}
 ?>
