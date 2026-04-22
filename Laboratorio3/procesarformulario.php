@@ -7,8 +7,9 @@ $edad = $_POST['edad'];
 
 //Captar datos con GET
 
-
-
+$nombre = $_GET['nombre'];
+$peso = $_GET['peso'];
+$altura = $_GET['altura'];
 
 
 ?>
