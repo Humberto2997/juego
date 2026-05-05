@@ -1,5 +1,4 @@
 <?php
-// Archivo: Enemigo.php
 require_once 'Personaje.php';
 class Enemigo extends Personaje {
     public function __construct($nombre, $imagen, $debilidad) {

@@ -1,5 +1,4 @@
 <?php
-// Archivo: Heroe.php
 require_once 'Personaje.php';
 class Heroe extends Personaje {
     public function __construct($nombre, $imagen) {

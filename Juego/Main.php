@@ -1,11 +1,9 @@
 <?php
-// IMPORTANTE: Las clases DEBEN cargarse antes de iniciar la sesión
 require_once 'Heroe.php';
 require_once 'Enemigo.php';
 
 session_start();
 
-// 1. INICIALIZACIÓN (Solo si la sesión está vacía)
 if (!isset($_SESSION['heroe']) || isset($_GET['reset'])) {
     if(isset($_GET['reset'])) { session_destroy(); session_start(); }
     
@@ -21,23 +19,18 @@ if (!isset($_SESSION['heroe']) || isset($_GET['reset'])) {
     $_SESSION['log_enemigo'] = "Esperando movimiento...";
 }
 
-// Asignamos a variables locales para facilitar el código
 $jugador = $_SESSION['heroe'];
 $enemigos = $_SESSION['enemigos'];
 
-//
-// Estado del juego
 $enemigosVivos = array_filter($enemigos, function($e) { return $e->vida > 0; });
 $juegoTerminado = ($jugador->vida <= 0) || empty($enemigosVivos);
 
-// 2. PROCESAR ACCIONES
 if (isset($_GET['accion']) && !$juegoTerminado) {
     $accion = $_GET['accion'];
 
     
-    // --- TU TURNO ---
+
     if (($accion == 'fisico' || $accion == 'magia') && $jugador->vida > 0) {
-        // Buscar un enemigo que no esté muerto
         if ($jugador->energia <= 0 ){
             $_SESSION['log_heroe'] = "<strong>TU TURNO</strong><br>No tienea Mana<br>Usa una pocion para el Mana";
         }else{    
@@ -64,19 +57,15 @@ if (isset($_GET['accion']) && !$juegoTerminado) {
     elseif ($accion == 'curar_vida') {
        if ($_SESSION['pociones_vida'] > 0) {
         
-        // 2. Restar una poción
         $_SESSION['pociones_vida']--; 
         $pocion_actual = $_SESSION['pociones_vida'];
 
-        // 3. Calcular la curación
         $cura = rand(20, 25);
         $jugador->vida = min(70, $jugador->vida + $cura);
 
-        // 4. Registrar el éxito en el log
         $_SESSION['log_heroe'] = "<strong>TU TURNO</strong><br>Usaste: Poción de Vida<br>Curación: $cura HP";
         
     } else {
-        // 5. Si no tiene pociones, mostrar mensaje de error
         $_SESSION['log_heroe'] = "<strong>TU TURNO</strong><br>¡No te quedan pociones!";
         }
     }
@@ -94,7 +83,6 @@ if (isset($_GET['accion']) && !$juegoTerminado) {
     }
 }
 
-    // --- TURNO DEL ENEMIGO ---
     $vivosParaContraataque = array_filter($enemigos, function($e) { return $e->vida > 0; });
     if (!empty($vivosParaContraataque) && $jugador->vida > 0) {
         $atacante = $vivosParaContraataque[array_rand($vivosParaContraataque)];
@@ -105,7 +93,6 @@ if (isset($_GET['accion']) && !$juegoTerminado) {
         $_SESSION['log_enemigo'] = "<strong>TURNO DE ENEMIGO: {$atacante->nombre}</strong><br>Te atacó con: $tipoEne<br>Daño recibido: $dañoEne";
     }
 
-    // Guardamos los cambios de vuelta a la sesión antes de recargar
     $_SESSION['heroe'] = $jugador;
     $_SESSION['enemigos'] = $enemigos;
 
