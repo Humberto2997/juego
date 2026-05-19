@@ -77,7 +77,7 @@ $aspirante = $stmtC->fetch();
 $hoy = new DateTime();
 $max_fecha = (clone $hoy)->modify('-18 years')->format('Y-m-d'); // Fecha máxima permitida (para cumplir los 18 años)
 $min_fecha = (clone $hoy)->modify('-45 years')->format('Y-m-d'); // Fecha mínima permitida (máximo 45 años)
-?>
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -177,5 +177,24 @@ $min_fecha = (clone $hoy)->modify('-45 years')->format('Y-m-d'); // Fecha mínim
         <button class="btn btn-bloque" type="submit">Enviar Formulario a RH</button>
     </form>
 </div>
+
+<script>
+    // Script para poner Edad maxima y minima en la alerta
+const fecha = document.getElementById('fecha_nacimiento');
+
+fecha.addEventListener('invalid', function () {
+    if (fecha.validity.rangeOverflow) {
+        fecha.setCustomValidity('Debe tener al menos 18 años para poder postularse.');
+    } else if (fecha.validity.rangeUnderflow) {
+        fecha.setCustomValidity('No debe tener más de 45 años para poder postularse.');
+    } else if (fecha.validity.valueMissing) {
+        fecha.setCustomValidity('La fecha de nacimiento es obligatoria.');
+    }
+});
+
+fecha.addEventListener('input', function () {
+    fecha.setCustomValidity('');
+});
+</script>
 </body>
 </html>

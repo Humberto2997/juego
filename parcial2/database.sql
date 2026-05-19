@@ -44,4 +44,9 @@ CREATE TABLE IF NOT EXISTS intentos_login (
 
 -- Cuenta de prueba de Recursos Humanos
 INSERT INTO usuarios (username, password_hash, rol) VALUES 
-('reclutador_rh', '$2y$10$tZ2pBv6Vf132e.Pms/P9fO0f9GepgY.aHqGgI0zObeK91t.F6YfC2', 'rh');
+('reclutador_rh', '$2y$10$IY8np5b6jkRwNRuS3bH6wOev8s0/ra1NhFFW3ZjSZOgg2.w2bjDo2', 'rh'),
+('Humberto1', '$2y$10$IY8np5b6jkRwNRuS3bH6wOev8s0/ra1NhFFW3ZjSZOgg2.w2bjDo2', 'rh'),
+('Jose', '$2y$10$IY8np5b6jkRwNRuS3bH6wOev8s0/ra1NhFFW3ZjSZOgg2.w2bjDo2', 'rh'),
+('Miguel', '$2y$10$IY8np5b6jkRwNRuS3bH6wOev8s0/ra1NhFFW3ZjSZOgg2.w2bjDo2', 'rh'),
+('Jhezrrel', '$2y$10$IY8np5b6jkRwNRuS3bH6wOev8s0/ra1NhFFW3ZjSZOgg2.w2bjDo2', 'rh');
+-- Actualice el hash para la contrase;a. y creo nuestros usuarios si ya lo habian corrido hagan un UPDATE A LA CONTRASENA
