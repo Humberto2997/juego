@@ -1,5 +1,4 @@
 <?php
-// register.php
 require_once 'config.php';
 iniciarSesion();
 
@@ -23,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores[] = 'El usuario debe tener mínimo 4 caracteres.'; 
     }
 
-    // Directiva de contraseña segura (Mínimo 15 caracteres, mayúsculas, minúsculas, números y símbolos)
+    // Directiva de contrasena segura (Mínimo 15 caracteres, mayúsculas, minúsculas, números y símbolos)
     if (strlen($password) < 15) {
         $errores[] = 'La contraseña debe contener un mínimo estricto de 15 caracteres.';
     }
@@ -48,12 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 $pdo->beginTransaction();
                 
-                // 1. Insertar solo las credenciales esenciales
+                // Insertar solo las credenciales esenciales
                 $ins1 = $pdo->prepare('INSERT INTO usuarios (username, password_hash, rol) VALUES (?, ?, "aspirante")');
                 $ins1->execute([$username, $hash]);
                 $uid = (int)$pdo->lastInsertId();
 
-                // 2. Crear fila vacía en aspirantes ligada al usuario para que exista su registro vacío
+                // Crear fila vacía en aspirantes ligada al usuario para que exista su registro vacío
                 $ins2 = $pdo->prepare('INSERT INTO aspirantes (usuario_id, estado) VALUES (?, "no revisado")');
                 $ins2->execute([$uid]);
                 
@@ -85,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php if ($exito): ?>
         <div class="exito">
-            ✅ <strong>¡Cuenta creada con éxito!</strong><br>
+             <strong>¡Cuenta creada con éxito!</strong><br>
             Inicia sesión ahora para completar tus datos de Recursos Humanos.<br><br>
             <a class="btn" href="login.php" style="display:inline-block; text-decoration:none; text-align:center;">Ir al Login →</a>
         </div>

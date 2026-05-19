@@ -1,5 +1,4 @@
 <?php
-// formulario.php
 require_once 'config.php';
 verificarSesion();
 
@@ -43,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errores[] = 'La fecha de nacimiento no puede ser una fecha futura.';
         } elseif ($edad <= 18) {
             $errores[] = 'Debe ser mayor de edad para poder postularse.';
-        } elseif ($edad >= 50) {
-            $errores[] = 'La edad máxima permitida es de 50 años.';
+        } elseif ($edad >= 45) {
+            $errores[] = 'La edad máxima permitida es de 45 años.';
         }
     }
     if ($nacionalidad === '') $errores[] = 'La nacionalidad es obligatoria.';
@@ -77,7 +76,7 @@ $aspirante = $stmtC->fetch();
 
 $hoy = new DateTime();
 $max_fecha = (clone $hoy)->modify('-18 years')->format('Y-m-d'); // Fecha máxima permitida (para cumplir los 18 años)
-$min_fecha = (clone $hoy)->modify('-100 years')->format('Y-m-d'); // Fecha mínima permitida (máximo 100 años)
+$min_fecha = (clone $hoy)->modify('-45 years')->format('Y-m-d'); // Fecha mínima permitida (máximo 45 años)
 ?>
 ?>
 <!DOCTYPE html>
@@ -93,7 +92,7 @@ $min_fecha = (clone $hoy)->modify('-100 years')->format('Y-m-d'); // Fecha míni
     <div class="topbar">
         <span class="logo" style="margin-bottom:0;">💼 Portal de Talento</span>
         <div>
-            <span class="usuario">👤 <?= limpiar($_SESSION['usuario_nombre']) ?></span>&nbsp;|&nbsp;
+            <span class="usuario"> <?= limpiar($_SESSION['usuario_nombre']) ?></span>&nbsp;|&nbsp;
             <a class="logout" href="logout.php">Cerrar sesión</a>
         </div>
     </div>
@@ -103,7 +102,7 @@ $min_fecha = (clone $hoy)->modify('-100 years')->format('Y-m-d'); // Fecha míni
         Por favor, complete los siguientes campos obligatorios (*) requeridos para procesar su postulación.
     </p>
 
-    <?php if ($mensaje): ?> <div class="exito">✅ <?= limpiar($mensaje) ?></div> <?php endif; ?>
+    <?php if ($mensaje): ?> <div class="exito"> <?= limpiar($mensaje) ?></div> <?php endif; ?>
     <?php if (!empty($errores)): ?>
         <div class="error">
             <ul><?php foreach ($errores as $err): ?> <li><?= limpiar($err) ?></li> <?php endforeach; ?></ul>

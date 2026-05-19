@@ -1,5 +1,5 @@
 <?php
-// dashboard_rh.php
+
 require_once 'config.php';
 verificarSesion();
 
@@ -50,7 +50,7 @@ $solicitudes = $pdo->query('SELECT * FROM aspirantes ORDER BY updated_at DESC')-
 <body>
 <div class="contenedor-ancho" style="max-width:900px;">
     <div class="topbar">
-        <span class="logo" style="margin-bottom:0;">💼 Módulo Reclutamiento (RH)</span>
+        <span class="logo" style="margin-bottom:0;"> Módulo Reclutamiento (RH)</span>
         <div>
             <span class="usuario">Analista: <strong><?= limpiar($_SESSION['usuario_nombre']) ?></strong></span>&nbsp;|&nbsp;
             <a class="logout" href="logout.php">Cerrar sesión</a>
@@ -60,7 +60,7 @@ $solicitudes = $pdo->query('SELECT * FROM aspirantes ORDER BY updated_at DESC')-
     <h1>Solicitudes de Empleo Recibidas</h1>
     <p style="font-size:13px;color:#777;">Control de aspirantes registrados en el sistema.</p>
 
-    <?php if ($notificacion): ?> <div class="exito" style="text-align:left;">ℹ️ <?= limpiar($notificacion) ?></div> <?php endif; ?>
+    <?php if ($notificacion): ?> <div class="exito" style="text-align:left;"> <?= limpiar($notificacion) ?></div> <?php endif; ?>
 
     <table class="tabla-gestion">
         <thead>

@@ -1,5 +1,4 @@
 <?php
-// config.php — Configuración del sistema de Recursos Humanos
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');       
@@ -21,7 +20,7 @@ function getDB(): PDO {
         } catch (PDOException $e) {
             // Protección contra filtrado de entorno: No se muestra $e->getMessage()
             die('<div style="font-family:sans-serif;background:#fff5f5;color:#c0392b;padding:2rem;border:1px solid #ebccd1;border-radius:4px;margin:2rem;text-align:center;">
-                <strong>❌ Error de conexión:</strong> Ocurrió un problema al conectar con el servidor de datos. Por favor, contacte al administrador.</div>');
+                <strong> Error de conexión:</strong> Ocurrió un problema al conectar con el servidor de datos. Por favor, contacte al administrador.</div>');
         }
     }
     return $pdo;

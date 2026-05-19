@@ -1,5 +1,4 @@
 <?php
-// login.php
 require_once 'config.php';
 iniciarSesion();
 
@@ -20,7 +19,7 @@ try {
     $bloqueo = $stmtB->fetch();
 
     if ($bloqueo && $bloqueo['intentos'] >= 5 && (time() - strtotime($bloqueo['ultimo_intento'])) < 300) {
-        die('<div style="font-family:sans-serif; text-align:center; margin-top:50px;"><h2>⚠️ Acceso bloqueado temporalmente</h2><p>Demasiados intentos fallidos. Intente de nuevo en 5 minutos.</p></div>');
+        die('<div style="font-family:sans-serif; text-align:center; margin-top:50px;"><h2> Acceso bloqueado temporalmente</h2><p>Demasiados intentos fallidos. Intente de nuevo en 5 minutos.</p></div>');
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -72,7 +71,7 @@ try {
     <h1>Iniciar Sesión</h1>
     <p style="font-size:13px;color:#777;margin-bottom:20px;">Plataforma de selección de Personal.</p>
 
-    <?php if ($error): ?> <div class="error">⚠️ <?= limpiar($error) ?></div> <?php endif; ?>
+    <?php if ($error): ?> <div class="error"> <?= limpiar($error) ?></div> <?php endif; ?>
 
     <form method="POST" action="login.php">
         <label for="username">Usuario</label>
