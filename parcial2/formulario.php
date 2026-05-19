@@ -41,10 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Comprobar si la fecha ingresada es del futuro
         if ($fecha_nacimiento_dt > $hoy) {
             $errores[] = 'La fecha de nacimiento no puede ser una fecha futura.';
-        } elseif ($edad < 18) {
-            $errores[] = 'Debe ser mayor de 18 años para poder postularse.';
-        } elseif ($edad > 100) {
-            $errores[] = 'La edad máxima permitida es de 100 años.';
+        } elseif ($edad <= 18) {
+            $errores[] = 'Debe ser mayor de edad para poder postularse.';
+        } elseif ($edad >= 50) {
+            $errores[] = 'La edad máxima permitida es de 50 años.';
         }
     }
     if ($nacionalidad === '') $errores[] = 'La nacionalidad es obligatoria.';

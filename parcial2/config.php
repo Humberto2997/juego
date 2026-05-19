@@ -32,7 +32,7 @@ function iniciarSesion(): void {
         session_set_cookie_params([
             'lifetime' => 0,
             'path'     => '/',
-            'secure'   => false, // Cambiar a true si se utiliza HTTPS en producción
+            'secure'   => false, 
             'httponly' => true,  // Mitigación XSS en cookies de sesión
             'samesite' => 'Strict',
         ]);
