@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <div class="contenedor">
-    <span class="logo">💼 RHApp</span>
+    <span class="logo"> RRHH App</span>
     <h1>Registro de Cuenta</h1>
     <p style="font-size:13px;color:#777;margin-bottom:20px;">Crea tu usuario para poder postularte.</p>
 

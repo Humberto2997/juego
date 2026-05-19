@@ -90,7 +90,7 @@ $min_fecha = (clone $hoy)->modify('-45 years')->format('Y-m-d'); // Fecha mínim
 <body>
 <div class="contenedor-ancho">
     <div class="topbar">
-        <span class="logo" style="margin-bottom:0;">💼 Portal de Talento</span>
+        <span class="logo" style="margin-bottom:0;"> Portal de Talento</span>
         <div>
             <span class="usuario"> <?= limpiar($_SESSION['usuario_nombre']) ?></span>&nbsp;|&nbsp;
             <a class="logout" href="logout.php">Cerrar sesión</a>

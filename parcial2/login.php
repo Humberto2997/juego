@@ -67,7 +67,7 @@ try {
 </head>
 <body>
 <div class="contenedor">
-    <span class="logo">💼 RHApp</span>
+    <span class="logo"> RRHH App</span>
     <h1>Iniciar Sesión</h1>
     <p style="font-size:13px;color:#777;margin-bottom:20px;">Plataforma de selección de Personal.</p>
 
