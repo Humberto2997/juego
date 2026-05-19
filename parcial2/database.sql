@@ -50,3 +50,28 @@ INSERT INTO usuarios (username, password_hash, rol) VALUES
 ('Miguel', '$2y$10$IY8np5b6jkRwNRuS3bH6wOev8s0/ra1NhFFW3ZjSZOgg2.w2bjDo2', 'rh'),
 ('Jhezrrel', '$2y$10$IY8np5b6jkRwNRuS3bH6wOev8s0/ra1NhFFW3ZjSZOgg2.w2bjDo2', 'rh');
 -- Actualice el hash para la contrase;a. y creo nuestros usuarios si ya lo habian corrido hagan un UPDATE A LA CONTRASENA
+
+-- Usuarios de prueba
+INSERT INTO usuarios (username, password_hash, rol) VALUES
+('juan_perez', '$2y$10$9ohIWXvN954Kb/nEwzx5FuCfcML5kqk6N3xVR1Kln7sJK/bbqtN0W', 'aspirante'),
+('maria_gomez', '$2y$10$9ohIWXvN954Kb/nEwzx5FuCfcML5kqk6N3xVR1Kln7sJK/bbqtN0W', 'aspirante'),
+('carlos_ruiz', '$2y$10$9ohIWXvN954Kb/nEwzx5FuCfcML5kqk6N3xVR1Kln7sJK/bbqtN0W', 'aspirante'),
+('ana_torres', '$2y$10$9ohIWXvN954Kb/nEwzx5FuCfcML5kqk6N3xVR1Kln7sJK/bbqtN0W', 'aspirante'),
+('luis_mendoza', '$2y$10$9ohIWXvN954Kb/nEwzx5FuCfcML5kqk6N3xVR1Kln7sJK/bbqtN0W', 'aspirante');
+-- portante: Contrasena para todos los de prueba Prueba123456789*
+
+
+-- Datos de los Usuarios
+INSERT INTO aspirantes 
+(usuario_id, cedula_pasaporte, nombre, apellido, estado_civil, genero, tipo_sangre, fecha_nacimiento, nacionalidad, telefono, residencia, correo_electronico, estado)
+VALUES
+
+(1, '8-925-831', 'Juan', 'Perez', 'Soltero', 'masculino', 'O+', '1998-05-12', 'Panameña', '64310110', 'Panamá Oeste', 'juan@gmail.com', 'no revisado'),
+
+(2, '8-777-222', 'Maria', 'Gomez', 'Casada', 'femenino', 'A+', '1995-08-20', 'Panameña', '65002211', 'San Miguelito', 'maria@gmail.com', 'considerado'),
+
+(3, 'E-123-456', 'Carlos', 'Ruiz', 'Soltero', 'masculino', 'B+', '1990-11-15', 'Colombiana', '67778899', 'Ciudad de Panamá', 'carlos@gmail.com', 'no considerado'),
+
+(4, '9-888-777', 'Ana', 'Torres', 'Divorciada', 'femenino', 'AB+', '1987-03-09', 'Panameña', '61234567', 'Chorrera', 'ana@gmail.com', 'considerado'),
+
+(5, 'PE-998877', 'Luis', 'Mendoza', 'Casado', 'masculino', 'O-', '1993-07-01', 'Peruana', '69995544', 'David, Chiriquí', 'luis@gmail.com', 'no revisado');
