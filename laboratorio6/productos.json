@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "nombre": "MacBook Pro",
+        "marca": "Apple",
+        "precio": 999.99,
+        "stock": 5,
+        "tipo": "tecnologico"
+    },
+    {
+        "id": 2,
+        "nombre": "mouse Gaming",
+        "marca": "Logitech",
+        "precio": 25.5,
+        "stock": 10,
+        "tipo": "accesorio"
+    },
+    {
+        "id": 3,
+        "nombre": "teclado Grande",
+        "marca": "Logitech",
+        "precio": 45,
+        "stock": 5,
+        "tipo": "accesorio"
+    },
+    {
+        "id": 4,
+        "nombre": "Victus gaming laptop",
+        "marca": "Hp",
+        "precio": 1200,
+        "stock": 6,
+        "tipo": "Computadoras y laptops"
+    }
+]
